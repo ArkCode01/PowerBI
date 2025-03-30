@@ -1,0 +1,201 @@
+table bank_customers_train
+	lineageTag: 4f31ae17-e8dc-49f3-ab78-feb1710a0765
+
+	column age
+		dataType: int64
+		formatString: 0
+		lineageTag: 3bfe7d8d-dc78-4931-a170-ba3239383a7f
+		summarizeBy: sum
+		sourceColumn: age
+
+		annotation SummarizationSetBy = Automatic
+
+	column job
+		dataType: string
+		lineageTag: 80b4e0d6-b67f-49e6-940d-8fdc4bca3812
+		summarizeBy: none
+		sourceColumn: job
+
+		annotation SummarizationSetBy = Automatic
+
+	column marital
+		dataType: string
+		lineageTag: c12d6721-7ed8-4ff5-8951-4fca2f480f1a
+		summarizeBy: none
+		sourceColumn: marital
+
+		annotation SummarizationSetBy = Automatic
+
+	column education
+		dataType: string
+		lineageTag: bd1c9044-2932-4c11-90d4-1807488c8c7b
+		summarizeBy: none
+		sourceColumn: education
+
+		annotation SummarizationSetBy = Automatic
+
+	column default
+		dataType: string
+		lineageTag: cbaa7465-7a3b-402c-938d-7b0dbfdcb8dd
+		summarizeBy: none
+		sourceColumn: default
+
+		annotation SummarizationSetBy = Automatic
+
+	column housing
+		dataType: string
+		lineageTag: b03f9ee4-cc24-403c-839b-5d23cc145ad4
+		summarizeBy: none
+		sourceColumn: housing
+
+		annotation SummarizationSetBy = Automatic
+
+	column loan
+		dataType: string
+		lineageTag: ddd1e165-aafd-4b67-932e-99f8441a621c
+		summarizeBy: none
+		sourceColumn: loan
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact
+		dataType: string
+		lineageTag: da7d3b40-3c49-4667-98ad-b87634787f7b
+		summarizeBy: none
+		sourceColumn: contact
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: string
+		lineageTag: 2e20d20b-b876-4a97-becc-2c3040d05c50
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_week
+		dataType: string
+		lineageTag: 3171431a-6b08-4d04-a506-b61d0e4ceea4
+		summarizeBy: none
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration
+		dataType: int64
+		formatString: 0
+		lineageTag: 896886ff-53ef-4d45-a5d3-917333844ded
+		summarizeBy: sum
+		sourceColumn: duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d74c2fd-d936-4816-99c2-71538b5b713a
+		summarizeBy: sum
+		sourceColumn: campaign
+
+		annotation SummarizationSetBy = Automatic
+
+	column pdays
+		dataType: int64
+		formatString: 0
+		lineageTag: 001e20c2-3672-4fd0-9f40-12287f58aee1
+		summarizeBy: sum
+		sourceColumn: pdays
+
+		annotation SummarizationSetBy = Automatic
+
+	column previous
+		dataType: int64
+		formatString: 0
+		lineageTag: c0ab5a19-c7b5-48ce-90a4-074384858c7b
+		summarizeBy: sum
+		sourceColumn: previous
+
+		annotation SummarizationSetBy = Automatic
+
+	column poutcome
+		dataType: string
+		lineageTag: 72c63906-fce8-4c55-b907-9ffce55daa03
+		summarizeBy: none
+		sourceColumn: poutcome
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'emp.var.rate'
+		dataType: double
+		lineageTag: 18d1d771-5eb3-4e6c-bd36-21ccf7163f7a
+		summarizeBy: sum
+		sourceColumn: emp.var.rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'cons.price.idx'
+		dataType: double
+		lineageTag: 100d5e2e-df9c-4b08-ba04-b9289cfcbe08
+		summarizeBy: sum
+		sourceColumn: cons.price.idx
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'cons.conf.idx'
+		dataType: double
+		lineageTag: 0e0d1033-e71c-496c-818e-933e43b6fe0a
+		summarizeBy: sum
+		sourceColumn: cons.conf.idx
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column euribor3m
+		dataType: double
+		lineageTag: d9061ee5-5c00-4712-a58b-d0443ddb5665
+		summarizeBy: sum
+		sourceColumn: euribor3m
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'nr.employed'
+		dataType: double
+		lineageTag: 99306703-ba22-402d-9b5d-2bb3412a9bc6
+		summarizeBy: sum
+		sourceColumn: nr.employed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column y
+		dataType: string
+		lineageTag: b1f429d2-f438-4d2d-a687-01ed76d7f142
+		summarizeBy: none
+		sourceColumn: y
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bank_customers_train = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\PBI\Data-20250129T221638Z-001\Data\Power BI Labs(Hands On)\PBILAB09-Marketing\Bank Marketing Dataset\bank_customers_train.csv"),[Delimiter=",", Columns=21, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"age", Int64.Type}, {"job", type text}, {"marital", type text}, {"education", type text}, {"default", type text}, {"housing", type text}, {"loan", type text}, {"contact", type text}, {"month", type text}, {"day_of_week", type text}, {"duration", Int64.Type}, {"campaign", Int64.Type}, {"pdays", Int64.Type}, {"previous", Int64.Type}, {"poutcome", type text}, {"emp.var.rate", type number}, {"cons.price.idx", type number}, {"cons.conf.idx", type number}, {"euribor3m", type number}, {"nr.employed", type number}, {"y", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([job] <> ""))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

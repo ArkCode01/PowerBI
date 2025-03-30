@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Marketing_Unfinished_PowerBI-Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "321c04c4-01c6-b579-46fb-51fe83944061"
+  }
+}
